@@ -3,6 +3,12 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+/**
+ * create table account(id char(10), balance int);
+ * insert into account values('A', 1000000);
+ * insert into account values('B', 1000000);
+ */
+
 public class Transaction {
 
     public static void main(String[] args) {
