@@ -27,15 +27,17 @@ class Consumer implements Runnable {
                 // 데이터가 비어있지 않을 경우에만 데이터 가져오기
                 if (!data.isEmpty()) {
 
-                    // 첫 번째 배열의 값 가져오기
-                    myData = data.get(0);
-
-                    // 공유 자원에서 가져온 데이터 출력
-                    System.out.println("[Thread " + threadID + "] : " + myData + "번 데이터를 가져옵니다.");
-
-                    // 첫 번째 배열 삭제
-                    data.remove(0);
+                    // 임계 영역 설정(synchronized 블록)
+                    synchronized (data) {
+                        // 첫 번째 배열의 값 가져오기
+                        myData = data.get(0);
+                        // 공유 자원에서 가져온 데이터 출력
+                        System.out.println("[Thread " + threadID + "] : " + myData + "번 데이터를 가져옵니다.");
+                        // 첫 번째 배열 삭제
+                        data.remove(0);
+                    }
                 }
+
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
