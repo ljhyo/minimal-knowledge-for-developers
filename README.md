@@ -1,1 +1,1 @@
-# minimal-knowledge-for-developers
+# 개발자를 위한 최소한의 실무지식
